@@ -2,28 +2,24 @@
   "name": "static-sheets",
   "version": "0.0.0",
   "keywords": [
-    "javascript",
-    "node",
-    "module",
-    "boilerplate"
+    "google",
+    "sheets",
+    "static",
+    "api",
+    "generator"
   ],
   "main": "dist/index.js",
-  "browser": "dist-browser/index.js",
   "author": "Kennedy Rose <krose@escaladesports.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/escaladesports/javascript-module-boilerplate.git"
+    "url": "https://github.com/escaladesports/static-sheets.git"
   },
   "license": "MIT",
   "scripts": {
     "analyze": "esca-scripts analyze --input './src/inject.js' --browser",
-    "build": "run-p build:main build:browser",
-    "build:main": "esca-scripts build --input './src/index.js' --output './dist/index.js' --babel --component",
-    "build:browser": "esca-scripts build --input './src/index.js' --output './dist-browser/index.js' --component --browser --minify --name moduleBoilerplate",
-    "dev": "esca-scripts dev ---input './dev/dev.js, ./dev/index.html' --browser",
-    "open:github": "opn https://github.com/escaladesports/javascript-module-boilerplate",
+    "build": "esca-scripts build --input './src/index.js' --cli",
+    "travis": "opn https://travis-ci.org/escaladesports/static-sheets/branches",
     "prepublishOnly": "npm run build",
-    "reset": "esca-scripts reset",
     "test": "esca-scripts test"
   },
   "devDependencies": {
