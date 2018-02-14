@@ -26,5 +26,7 @@
     "esca-scripts": "^0.13.1",
     "npm-run-all": "^4.1.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "meow": "^4.0.0"
+  }
 }

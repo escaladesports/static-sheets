@@ -1,13 +1,24 @@
+import meow from 'meow'
 
-console.log('Module loaded')
+const cli = meow(`
+	Usage
+	  $ static-sheets
 
-export default function(){
-	const def = {
-		test: '123'
+	Options
+	  --config, -c   Path to your config file, default: static-sheets.config.js
+	  --output, -o   Directory to output API, default: dist
+`, {
+	flags: {
+		config: {
+			type: 'string',
+			alias: 'c',
+			default: 'static-sheets.config.js',
+		},
+		output: {
+			type: 'string',
+			alias: 'o',
+			default: 'dist',
+		},
 	}
-	const obj = {
-		anotherTest: 'abc',
-		...def,
-	}
-	return obj
-}
+})
+
