@@ -1,25 +1,38 @@
-# JavaScript Module Boilerplate
+# Google Sheets Static API Generator
 
-A simple JavaScript boilerplate that outputs to ES5 and ES6.
+WIP
 
-## Getting started
+Builds a static API with any Google Sheet.
+
+## Installation
 
 ```bash
-git clone git@github.com:escaladesports/javascript-module-boilerplate.git --depth=1 your-module
-cd your-module
-yarn
-yarn reset
+npm install --global static-sheets
 ```
-
-Also make sure to edit the `package.json` file with a new name, version number, author, and anything else you might need.
 
 ## Usage
 
-- `yarn build`: Build browser and node versions of the module
-- `yarn dev`: Run live dev mode
-- `yarn test`: Run mocha tests
-- `yarn analyze`: View bundle sizes
+Create a `static-sheets.config.js` file in the root directory of your project. Supply your [Google Sheets API credentials](https://developers.google.com/sheets/api/guides/authorizing#APIKey), as well as the spreadsheet ID and worksheet ID.
 
-# Unit Testing
+Your spreadsheet ID is the long string of characters in the URL. For example: `https://docs.google.com/spreadsheets/d/YOUR_SPREADSHEET_ID/edit#gid=0`.
 
-Unit tests will be performed pre-commit and pre-publish. You can change this in the npm scripts if this doesn't work well with your use case.
+The worksheet ID is the name of the tab at the bottom that you want to use.
+
+```javascript
+// static-sheets.config.js
+'use strict'
+module.exports = {
+	privateKey: '',
+	cilentEmail: '',
+	spreadsheetId: '',
+	worksheetId: '',
+}
+```
+
+Then run in your terminal:
+
+```bash
+static-sheets
+```
+
+This should output all your JSON files in the `dist` directory. For more CLI options, run `static-sheets --help`.
