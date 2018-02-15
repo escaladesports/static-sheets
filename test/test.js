@@ -1,9 +1,13 @@
+import { load as loadEnv } from 'envdotjs'
 import { expect } from 'chai'
-import theModule from '../src'
+import fetchGoogleSheet from '../src/fetch-google-sheet'
+
+loadEnv()
 
 describe('Default module', () => {
-	it('Should have content', () => {
-		const testVar = theModule()
-		expect(testVar).to.not.be.empty
+	it('Should have content', async () => {
+		const data = await fetchGoogleSheet(process.env)
+		console.log(data)
+		expect(data).to.not.be.empty
 	})
 })
