@@ -1,12 +1,18 @@
 import meow from 'meow'
 
+import staticSheets from './index'
+import createConfig from './create-config'
+
 const cli = meow(`
 	Usage
-	  $ static-sheets
+	  $ static-sheets <command>
+
+	Commands
+	  $ build           Creates a distribution build
+	  $ create-config   Creates a new config file
 
 	Options
 	  --config, -c   Path to your config file, default: static-sheets.config.js
-	  --output, -o   Directory to output API, default: dist
 `, {
 	flags: {
 		config: {
@@ -22,3 +28,11 @@ const cli = meow(`
 	}
 })
 
+switch (cli.flags.input[0]){
+	case 'build':
+		staticSheets(null, cli.flags.config)
+		break
+	case 'create-config':
+		createConfig(cli.flags.config)
+		break
+}

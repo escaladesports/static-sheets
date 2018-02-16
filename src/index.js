@@ -6,9 +6,9 @@ import sheetToObj from './sheet-to-obj'
 import dataMap from './data-map'
 import writeApi from './write-api'
 
-async function createApi(config){
+async function createApi(config, configFile = 'static-sheets.config.js'){
 	// Get config
-	let configPath = join(process.cwd(), './static-sheets.config.js')
+	let configPath = join(process.cwd(), configFile)
 	if (typeof config !== 'object' && await pathExists(configPath)){
 		config = await import(configPath)
 	}
@@ -16,8 +16,8 @@ async function createApi(config){
 		dir: `dist`,
 		paths: [ `:rowId` ],
 		outputJson: true,
+		fileExtension: `.json`,
 		lowerCasePath: true,
-		fileExtension: '.json',
 		schema: {},
 		...config
 	}
