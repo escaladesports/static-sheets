@@ -44,8 +44,8 @@ By default, there will only be a single endpoint for each row. You can add more 
 // static-sheets.config.js
 module.exports = {
 	paths: {
-		'product/:productId': {},
-		'category/:category': {},
+		'api/:categoryName': {},
+		'api/:categoryName/:productId': {},
 	}
 	...
 }
@@ -54,21 +54,32 @@ module.exports = {
 This might generate filepaths similar to:
 
 ```
-/dist/product/abf1.json
-/dist/product/bql23.json
-/dist/product/kdn7.json
-/dist/product/kdn8.json
-/dist/category/apples.json
-/dist/category/pears.json
+/api/apples.json
+/api/pears.json
+/api/apples/apl-01.json
+/api/apples/apl-02.json
+/api/pears/pr-01.json
+/api/pears/pr-02.json
 ```
 
-Remember to camelcase your headers when writing your paths. For example, a header of `Product ID` could be used in a path like:
+Remember to camelcase your headers when writing your paths. For example, a header of `Comment ID` could be used in a path like:
 
 ```javascript
 // static-sheets.config.js
 module.exports = {
 	paths: {
-		'product/:productId': {}
+		'product/:commentId': {}
 	}
 	...
 }
+```
+
+## Pagination
+
+## Sorting
+
+## Limit/Offset
+
+## Querying
+
+## Options
