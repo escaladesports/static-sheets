@@ -68,18 +68,116 @@ Remember to camelcase your headers when writing your paths. For example, a heade
 // static-sheets.config.js
 module.exports = {
 	paths: {
-		'product/:commentId': {}
+		'comments/:commentId': {}
 	}
 	...
 }
 ```
 
-## Pagination
-
-## Sorting
-
-## Limit/Offset
-
-## Querying
-
 ## Options
+
+Options can be supplied to individual paths, or in the config object if you want the option to apply to all paths.
+
+### Pagination
+
+WIP
+
+To paginate into multiple paths:
+
+```javascript
+// static-sheets.config.js
+...
+paths: {
+	'comments/:commentId': {
+		paginate: 5
+	}
+}
+...
+```
+
+This will limit the number of rows in a file to 5 and might generate filepaths similar to:
+
+```
+/comments/1.json
+/comments/2.json
+/comments/3.json
+```
+
+### Single Object
+
+Set `single` to true if you only want to return a single object rather than an array.
+
+### Type Conversion
+
+By default, all Google sheets data comes through as a string. But if you need other types, static-sheets can convert them for you.
+
+```javascript
+// static-sheets.config.js
+...
+paths: {
+	'reviews/:productId': {}
+},
+types: {
+	timestamp: Date,
+	rating: Number,
+	approved: Boolean
+}
+...
+```
+
+### Sorting
+
+WIP
+
+Supply an array of keys to sort the return:
+
+```javascript
+// static-sheets.config.js
+...
+paths: {
+	'reviews/:productId': {
+		sort: [ 'timestamp', 'rating' ],
+		sortDirection: 'ascending'
+	}
+}
+...
+```
+
+If you need more control over sorting, you can also supply a [sort function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).
+
+```javascript
+// static-sheets.config.js
+...
+paths: {
+	'reviews/:productId': {
+		sort: function(a, b){
+			if(a.timestamp > b.timestamp){
+				return -1
+			}
+			if(a.timestamp < b.timestamp){
+				return 1
+			}
+			return 0
+		}
+	}
+}
+...
+```
+
+### Querying
+
+WIP
+
+To limit results to a specific query, you can pass in a query object. If the result doesn't match the query object, it will not be included in the results.
+
+```javascript
+...
+paths: {
+	'reviews/:productId': {
+		query: {
+			approved: true
+		}
+	}
+}
+...
+```
