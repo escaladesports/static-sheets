@@ -1,24 +1,22 @@
-import meow from 'meow'
+import { join } from 'path'
+import { pathExists, readJson } from 'fs-extra'
 
-const cli = meow(`
-	Usage
-	  $ static-sheets
+import fetchSheet from '../src/fetch-sheet'
+import sheetToObj from '../src/sheet-to-obj'
 
-	Options
-	  --config, -c   Path to your config file, default: static-sheets.config.js
-	  --output, -o   Directory to output API, default: dist
-`, {
-	flags: {
-		config: {
-			type: 'string',
-			alias: 'c',
-			default: 'static-sheets.config.js',
-		},
-		output: {
-			type: 'string',
-			alias: 'o',
-			default: 'dist',
-		},
+async function createApi(config){
+	let configPath = join(process.cwd(), './static-sheets.config.js')
+	if (!config && await pathExists(configPath)){
+		config = await import(configPath)
 	}
-})
+	config = {
+		schema: {},
+		...config
+	}
 
+	let data = await fetchSheet(process.env)
+	data = sheetToObj(data, config)
+	return data
+}
+
+export default createApi

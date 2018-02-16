@@ -18,18 +18,21 @@
   "scripts": {
     "analyze": "esca-scripts analyze --input './src/inject.js' --browser",
     "build": "esca-scripts build --input './src/index.js' --cli",
-	 "encrypt": "envdotjs",
-	 "unencrypt": "envdotjs --unencrypt",
+    "encrypt": "envdotjs",
+    "unencrypt": "envdotjs --unencrypt",
     "travis": "opn https://travis-ci.org/escaladesports/static-sheets/branches",
     "prepublishOnly": "npm run build",
     "test": "esca-scripts test"
   },
   "devDependencies": {
     "envdotjs": "^1.1.4",
-    "esca-scripts": "^0.13.1",
+    "esca-scripts": "^0.14.1",
     "npm-run-all": "^4.1.2"
   },
   "dependencies": {
+    "camelcase": "^4.1.0",
+    "decamelize": "^2.0.0",
+    "fs-extra": "^5.0.0",
     "google-sheets-manager": "^1.0.4",
     "meow": "^4.0.0"
   }
