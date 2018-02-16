@@ -1,4 +1,6 @@
-# Google Sheets Static API Generator
+# static-sheets
+
+## A Google Sheets Static API Generator
 
 Builds a static API with any Google Sheet.
 

@@ -30,8 +30,8 @@ const config = {
 	jsonOptions: { spaces: '\t' },
 }
 
-describe('Default module', () => {
-	it('Should have content', async () => {
+describe('static-sheets', () => {
+	it('Should build API', async () => {
 		let data = await createApi(config)
 		expect(data).to.not.be.empty
 	}).timeout(10 * 60 * 1000)
