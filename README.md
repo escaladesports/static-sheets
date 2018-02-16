@@ -1,7 +1,5 @@
 # Google Sheets Static API Generator
 
-WIP
-
 Builds a static API with any Google Sheet.
 
 ## Installation
