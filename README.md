@@ -86,7 +86,7 @@ To paginate into multiple paths:
 // static-sheets.config.js
 ...
 paths: {
-	'comments/:commentId': {
+	'category/:categoryId': {
 		paginate: 5
 	}
 }
@@ -96,9 +96,9 @@ paths: {
 This will limit the number of rows in a file to 5 and might generate filepaths similar to:
 
 ```
-/comments/1.json
-/comments/2.json
-/comments/3.json
+/category/apples/1.json
+/category/apples/2.json
+/category/apples/3.json
 ```
 
 ### Single Object
