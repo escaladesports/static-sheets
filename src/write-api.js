@@ -5,7 +5,7 @@ async function writeApi(data, config){
 	await remove(config.dir)
 	let promises = []
 	for(let path in data){
-		promises.push(outputJson(path, data[path], config.jsonOptions))
+		promises.push(outputJson(`${path}${config.fileExtension}`, data[path], config.jsonOptions))
 	}
 	await Promise.all(promises)
 }

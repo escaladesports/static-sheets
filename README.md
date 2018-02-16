@@ -80,8 +80,6 @@ Options can be supplied to individual paths, or in the config object if you want
 
 ### Pagination
 
-WIP
-
 To paginate into multiple paths:
 
 ```javascript

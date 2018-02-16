@@ -15,6 +15,7 @@ const config = {
 			]
 		},
 		'product/:productSku': {
+			paginate: 2,
 			ignore: [ 'reviewBody' ]
 		},
 	},
@@ -25,7 +26,6 @@ const config = {
 		approved: Boolean,
 	},
 	jsonOptions: { spaces: '\t' },
-	...process.env
 }
 
 describe('Default module', () => {
