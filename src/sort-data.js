@@ -1,5 +1,5 @@
 export default function sortData(arr, config){
-	if(!Array.isArray(arr) || !config.sort) return arr
+	if(!config.sort) return arr
 	if(typeof config.sort === 'function'){
 		return arr.sort(config.sort)
 	}

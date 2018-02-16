@@ -2,6 +2,7 @@ import createPath from './create-path'
 import typeConversion from './type-conversion'
 import includeIgnore from './include-ignore'
 import sortData from './sort-data'
+import paginateData from './paginate-data'
 
 function createDataMap(data, config) {
 	console.log('Creating data map...')
@@ -57,10 +58,10 @@ function createDataMap(data, config) {
 		})
 	})
 
-	// Sort
 	for (let path in output) {
-		output[path] = sortData(output[path], configsObj[path])
-
+		if(!Array.isArray(output[path])) continue
+		sortData(output[path], configsObj[path])
+		paginateData(path, output, output[path], configsObj[path])
 	}
 
 	return output
