@@ -2743,6 +2743,10 @@ fill-range@^4.0.0:
     repeat-string "^1.6.1"
     to-regex-range "^2.1.0"
 
+filter-objects@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/filter-objects/-/filter-objects-2.1.1.tgz#9fe473dcf19f3f9a5b70887678a499dbbf3952f0"
+
 finalhandler@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.1.0.tgz#ce0b6855b45853e791b2fcc680046d88253dd7f5"

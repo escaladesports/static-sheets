@@ -125,8 +125,6 @@ types: {
 
 ### Sorting
 
-WIP
-
 Supply an key to sort by the return:
 
 ```javascript
@@ -163,17 +161,15 @@ paths: {
 ...
 ```
 
-### Querying
+### Filtering
 
-WIP
-
-To limit results to a specific query, you can pass in a query object. If the result doesn't match the query object, it will not be included in the results.
+To limit results, you can pass in a filter object. If the result doesn't match the filter object, it will not be included in the results.
 
 ```javascript
 ...
 paths: {
 	'reviews/:productId': {
-		query: {
+		filter: {
 			approved: true
 		}
 	}

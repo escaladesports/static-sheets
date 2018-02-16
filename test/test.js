@@ -15,7 +15,9 @@ const config = {
 			]
 		},
 		'product/:productSku': {
-			paginate: 2,
+			filter: {
+				productSku: 'B1002'
+			},
 			ignore: [ 'reviewBody' ]
 		},
 	},
