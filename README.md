@@ -127,15 +127,16 @@ types: {
 
 WIP
 
-Supply an array of keys to sort the return:
+Supply an key to sort by the return:
 
 ```javascript
 // static-sheets.config.js
 ...
 paths: {
 	'reviews/:productId': {
-		sort: [ 'timestamp', 'rating' ],
-		sortDirection: 'ascending'
+		sort: {
+			timestamp: 'ascending',
+		},
 	}
 }
 ...

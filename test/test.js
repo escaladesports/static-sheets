@@ -15,7 +15,9 @@ const config = {
 			]
 		},
 		'product/:productSku': {
-			paginate: 2,
+			sort: {
+				userNamealias: 'ascending'
+			},
 			ignore: [ 'reviewBody' ]
 		},
 	},

@@ -1,10 +1,12 @@
 import createPath from './create-path'
 import typeConversion from './type-conversion'
 import includeIgnore from './include-ignore'
+import sortData from './sort-data'
 
 function createDataMap(data, config) {
 	console.log('Creating data map...')
 	let output = {}
+	let configsObj = {}
 	data.forEach(obj => {
 
 		// Get paths and configs
@@ -37,18 +39,14 @@ function createDataMap(data, config) {
 			path = createPath(path, data, config)
 			if(path === false) return
 			path = `${config.dir}/${path}`
+			configsObj[path] = config
 
 			// Add to array of output data
 			if (!config.single) {
-				if (config.paginate) {
-					addToPaginated(output, path, data, config.paginate)
+				if (!(path in output)) {
+					output[path] = []
 				}
-				else {
-					if (!(path in output)) {
-						output[path] = []
-					}
-					output[path].push(data)
-				}
+				output[path].push(data)
 			}
 			// Only return a single object
 			else {
@@ -58,39 +56,15 @@ function createDataMap(data, config) {
 			}
 		})
 	})
+
+	// Sort
+	for (let path in output) {
+		output[path] = sortData(output[path], configsObj[path])
+
+	}
+
 	return output
 }
 
-function addToPaginated(output, path, data, limit){
-	let i = 1
-	let added = false
-	let page
-	while(!added){
-		page = `${path}/${i}`
-		if (!output[page] || !output[page].meta){
-			output[page] = {
-				results: [],
-				meta: {
-					page: i,
-					limit: limit,
-				}
-			}
-		}
-		if (output[page].results.length < limit){
-			output[page].results.push(data)
-			added = true
-		}
-		else{
-			i++
-		}
-	}
-	// Update number of pages in all meta
-	let pages = i
-	while(i >= 1){
-		console.log(`${path}/${i}`)
-		output[`${path}/${i}`].meta.pages = pages
-		i--
-	}
-}
 
 export default createDataMap
