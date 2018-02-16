@@ -34,6 +34,7 @@ function createDataMap(data, config) {
 			data = typeConversion(data, config)
 			data = includeIgnore(data, config)
 			path = createPath(path, data, config)
+			if(path === false) return
 			path = `${config.dir}/${path}${config.fileExtension}`
 
 			// Only output data

@@ -8,7 +8,10 @@ const config = {
 	paths: {
 		'review/:rowId': {
 			single: true,
-			include: [ 'reviewBody' ]
+			include: [
+				'reviewBody',
+				'rowId'
+			]
 		},
 		'product/:productSku': {
 			ignore: [ 'reviewBody' ]
