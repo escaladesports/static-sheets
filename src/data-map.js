@@ -1,5 +1,6 @@
 import createPath from './create-path'
 import typeConversion from './type-conversion'
+import includeIgnore from './include-ignore'
 
 function createDataMap(data, config) {
 	console.log('Creating data map...')
@@ -31,30 +32,9 @@ function createDataMap(data, config) {
 			let config = configs[key]
 			let data = { ...obj }
 			data = typeConversion(data, config)
+			data = includeIgnore(data, config)
 			path = createPath(path, data, config)
 			path = `${config.dir}/${path}${config.fileExtension}`
-
-			// Include/ignore data
-			if(config.ignore){
-				if (typeof config.ignore === 'string'){
-					delete data[config.ignore]
-				}
-				else{
-					config.ignore.forEach(key => {
-						delete data[key]
-					})
-				}
-			}
-			else if (config.include) {
-				let newData = {}
-				if (typeof config.ignore === 'string') {
-					config.include = [ config.include ]
-				}
-				config.include.forEach(key => {
-					newData[key] = data[key]
-				})
-				data = newData
-			}
 
 			// Only output data
 			if (!config.single) {
