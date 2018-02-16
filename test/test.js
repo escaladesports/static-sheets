@@ -5,6 +5,7 @@ import createApi from '../src'
 loadEnv()
 
 const config = {
+	spreadsheetId: '1pUVUer7_y0-IzryIYXITQE2qlZO7G0d96kya4q_HgRY',
 	paths: {
 		'review/:rowId': {
 			single: true,

@@ -23,7 +23,7 @@ async function createApi(config, configFile = 'static-sheets.config.js'){
 	}
 
 	// Create API
-	let data = await fetchSheet(process.env)
+	let data = await fetchSheet(config)
 	data = sheetToObj(data, config)
 	data = dataMap(data, config)
 	if(config.outputJson){
