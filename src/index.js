@@ -3,6 +3,7 @@ import { pathExists, readJson } from 'fs-extra'
 
 import fetchSheet from './fetch-sheet'
 import sheetToObj from './sheet-to-obj'
+import dataMap from './data-map'
 import writeApi from './write-api'
 
 async function createApi(config){
@@ -16,6 +17,7 @@ async function createApi(config){
 		paths: [ `:rowId` ],
 		outputJson: true,
 		lowerCasePath: true,
+		fileExtension: '.json',
 		schema: {},
 		...config
 	}
@@ -23,6 +25,7 @@ async function createApi(config){
 	// Create API
 	let data = await fetchSheet(process.env)
 	data = sheetToObj(data, config)
+	data = dataMap(data, config)
 	if(config.outputJson){
 		await writeApi(data, config)
 	}

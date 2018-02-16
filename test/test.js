@@ -5,11 +5,16 @@ import createApi from '../src'
 loadEnv()
 
 const config = {
-	paths: [
-		`review/:rowId`,
-		`product/:productSku`,
-	],
-	schema: {
+	paths: {
+		'review/:rowId': {
+			single: true,
+			include: [ 'reviewBody' ]
+		},
+		'product/:productSku': {
+			ignore: [ 'reviewBody' ]
+		},
+	},
+	types: {
 		timestamp: Date,
 		lengthOwned: Number,
 		wouldRecommendProduct: Boolean,

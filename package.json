@@ -21,7 +21,7 @@
     "encrypt": "envdotjs",
     "unencrypt": "envdotjs --unencrypt",
     "travis": "opn https://travis-ci.org/escaladesports/static-sheets/branches",
-	 "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "esca-scripts test"
   },
   "devDependencies": {
@@ -31,7 +31,6 @@
   },
   "dependencies": {
     "camelcase": "^4.1.0",
-    "decamelize": "^2.0.0",
     "fs-extra": "^5.0.0",
     "google-sheets-manager": "^1.0.4",
     "meow": "^4.0.0"
