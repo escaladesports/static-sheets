@@ -12,27 +12,26 @@ npm install --global static-sheets
 
 ## Usage
 
-Create a `static-sheets.config.js` file in the root directory of your project. Supply your [Google Sheets API credentials](https://developers.google.com/sheets/api/guides/authorizing#APIKey), as well as the spreadsheet ID and worksheet ID.
+To start, you'll need your secret key and client email from your [Google Sheets API credentials](https://developers.google.com/sheets/api/guides/authorizing#APIKey) as well as your spreadsheet ID. Your spreadsheet ID is the long string of characters in the URL. For example: `https://docs.google.com/spreadsheets/d/YOUR_SPREADSHEET_ID/edit#gid=0`.
 
-Your spreadsheet ID is the long string of characters in the URL. For example: `https://docs.google.com/spreadsheets/d/YOUR_SPREADSHEET_ID/edit#gid=0`.
+Make sure that you have a header row in your spreadsheet. The headers will be camel cased and used as keys in your data objects. Example:
 
-The worksheet ID is the name of the tab at the bottom that you want to use.
+![Header Example](https://github.com/escaladesports/static-sheets/blob/master/img/header.png)
+
+
+Then create a `static-sheets.config.js` file in the root directory of your project.
 
 ```javascript
 // static-sheets.config.js
-'use strict'
 module.exports = {
-	privateKey: '',
-	cilentEmail: '',
-	spreadsheetId: '',
-	worksheetId: '',
+	privateKey: 'YOUR_SHEETS_PRIVATE_KEY',
+	cilentEmail: 'YOUR_SHEETS_CLIENT_EMAIL',
+	spreadsheetId: 'YOUR_SPREADSHEET_ID',
 }
 ```
 
-Then run in your terminal:
+Run  static-sheets in your terminal:
 
 ```bash
 static-sheets
 ```
-
-This should output all your JSON files in the `dist` directory. For more CLI options, run `static-sheets --help`.
