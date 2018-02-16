@@ -16,7 +16,7 @@ To start, you'll need your secret key and client email from your [Google Sheets 
 
 Make sure that you have a header row in your spreadsheet. The headers will be camel cased and used as keys in your data objects. Example:
 
-![Header Example](https://github.com/escaladesports/static-sheets/blob/master/img/header.png)
+![Header Example](https://raw.githubusercontent.com/escaladesports/static-sheets/master/img/header.png)
 
 
 Then create a `static-sheets.config.js` file in the root directory of your project.
