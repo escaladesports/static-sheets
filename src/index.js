@@ -1,21 +1,31 @@
 import { join } from 'path'
 import { pathExists, readJson } from 'fs-extra'
 
-import fetchSheet from '../src/fetch-sheet'
-import sheetToObj from '../src/sheet-to-obj'
+import fetchSheet from './fetch-sheet'
+import sheetToObj from './sheet-to-obj'
+import writeApi from './write-api'
 
 async function createApi(config){
+	// Get config
 	let configPath = join(process.cwd(), './static-sheets.config.js')
-	if (!config && await pathExists(configPath)){
+	if (typeof config !== 'object' && await pathExists(configPath)){
 		config = await import(configPath)
 	}
 	config = {
+		dir: `dist`,
+		paths: [ `:rowId` ],
+		outputJson: true,
+		lowerCasePath: true,
 		schema: {},
 		...config
 	}
 
+	// Create API
 	let data = await fetchSheet(process.env)
 	data = sheetToObj(data, config)
+	if(config.outputJson){
+		await writeApi(data, config)
+	}
 	return data
 }
 

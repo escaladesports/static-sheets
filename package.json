@@ -21,7 +21,7 @@
     "encrypt": "envdotjs",
     "unencrypt": "envdotjs --unencrypt",
     "travis": "opn https://travis-ci.org/escaladesports/static-sheets/branches",
-    "prepublishOnly": "npm run build",
+	 "prepublishOnly": "npm run build",
     "test": "esca-scripts test"
   },
   "devDependencies": {
