@@ -10,7 +10,7 @@ Builds a static API with any Google Sheet.
 npm install --global static-sheets
 ```
 
-## Usage
+## Basic Usage
 
 To start, you'll need your secret key and client email from your [Google Sheets API credentials](https://developers.google.com/sheets/api/guides/authorizing#APIKey) as well as your spreadsheet ID. Your spreadsheet ID is the long string of characters in the URL. For example: `https://docs.google.com/spreadsheets/d/YOUR_SPREADSHEET_ID/edit#gid=0`.
 
@@ -35,3 +35,40 @@ Run  static-sheets in your terminal:
 ```bash
 static-sheets
 ```
+
+## Endpoints
+
+By default, there will only be a single endpoint for each row. You can add more endpoints in your config:
+
+```javascript
+// static-sheets.config.js
+module.exports = {
+	paths: {
+		'product/:productId': {},
+		'category/:category': {},
+	}
+	...
+}
+```
+
+This might generate filepaths similar to:
+
+```
+/dist/product/abf1.json
+/dist/product/bql23.json
+/dist/product/kdn7.json
+/dist/product/kdn8.json
+/dist/category/apples.json
+/dist/category/pears.json
+```
+
+Remember to camelcase your headers when writing your paths. For example, a header of `Product ID` could be used in a path like:
+
+```javascript
+// static-sheets.config.js
+module.exports = {
+	paths: {
+		'product/:productId': {}
+	}
+	...
+}

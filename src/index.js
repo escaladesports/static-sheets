@@ -14,7 +14,11 @@ async function createApi(config, configFile = 'static-sheets.config.js'){
 	}
 	config = {
 		dir: `dist`,
-		paths: [ `:rowId` ],
+		paths: {
+			':rowId': {
+				single: true
+			}
+		},
 		outputJson: true,
 		fileExtension: `.json`,
 		lowerCasePath: true,
